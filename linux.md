@@ -1,3 +1,7 @@
+### 虚拟机
+
+虚拟机是通过软件的方式来模拟完整的硬件系统
+
 虚拟机给linux内存分区
 
 boot分区引导分区1G
@@ -33,26 +37,6 @@ root分区根分区17G
 
 ---
 
-命令
-
-* `ifconfig`:	查看ip地址
-
-* `reboot`:	重启
-
-* `ls`:列出当前目录下的所有文件
-
-  `ls -a`:	显示所有文件
-
-  `ls -l`:	详细信息
-
-  `ls -la/s -al`:	显示所有文件的详细信息
-
-  `ls -al /root`:	显示指定文件下所有文件的详细信息
-
-  `ls -lh`:人性化显示
-
----
-
 ### 2.xshell,xftp6
 
 远程登陆到linux:	因为linux服务器是开发小组共享的,因此需要程序员远程登录到linux进行管理开发
@@ -67,18 +51,27 @@ xftp6:传送文件,相较于共享文件夹只能在局域网之间传送文件,
 
 linux系统会内置vi文本编辑器
 
-vim具有程序编辑能力,可以看作是vi的增强版本,可以主动的以字体颜色辨别语法的正确性,方便程序设计.代码不玩,编辑及错误跳转
 
-![image-20210803151616940](linux.assets/image-20210803151616940.png)
+
+vim具有程序编辑能力,可以看作是vi的增强版本,可以主动的以字体颜色辨别语法的正确性,方便程序设计.代码补完,编辑及错误跳转
+
+![image-20210803151616940](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210803151616940.png)
 
 ##### 1.正常模式
 
-以vim打开一个文件直接进入正常模式.在这个模式中,可以使用上下左右按键来移动光标,可以使用删除字符和删除整行字符来处理文件内容,可以使用复制粘贴快捷键来处理文件数据
+以vim打开一个文件直接进入正常模式.在这个模式中,可以使用上下左右键来移动光标,可以使用删除字符和删除整行字符来处理文件内容,可以使用复制粘贴快捷键来处理文件数据
 
-1. 拷贝当前行:	yy    举例:拷贝当前向下的5行,并粘贴(按下p):	5yy
-2. 删除当前行:    dd    举例:删除当前行向下的5行:    5dd
+1. ###### 拷贝当前行:	`yy`    
+
+   举例:拷贝当前向下的5行,并粘贴(按下p):	`5yy`
+
+2. ###### 删除当前行:    `dd`    
+
+   举例:删除当前行向下的5行:    `5dd`
+
 3. 使用快捷键到达文件最末行[G],到达最首行[gg]
-4. 撤销动作:    u
+
+4. 撤销动作:    `u`
 
 ##### 2.插入模式
 
@@ -88,30 +81,25 @@ vim具有程序编辑能力,可以看作是vi的增强版本,可以主动的以�
 
 按esc在输入`:`进入这个模式中
 
-1. 命令行下`/关键字`:回车在文件中查找某个单词.输入n就是查找下一个
+1. 命令行下`/关键字`:	回车在文件中查找某个单词.输入n就是查找下一个
 2. 命令行下`:set nu`和 `:set nonu`显示文件的行号,隐藏文件的行号.
 
 wq保存退出,q退出,q!强制退出,不保存
 
 ---
 
-### 4.关机和重启命令
+### 4.关机和重启指令
 
-```bash
-shutdown -h now 立刻关机
-shutdown -h 1 "hello,1分钟后关机"
-shutdown -r now 现在重新启动计算机
-halt 关机
-reboot 重启计算机
-sync 把内存中的数据同步到磁盘中
-```
+1. `shutdown -h now` 立刻关机
+2. `shutdown -h 1 "hello`1分钟后关机"
+3. `shutdown -r now` 现在重新启动计算机
+4. `halt` 关机
+5. `reboot` 重启计算机
+6. `sync` 把内存中的数据同步到磁盘中
 
 1. **不管是重启还是关闭系统,都要先执行sync命令,把内存中的数据写到磁盘中**
 
-用户登录和注销
-
-1. 登陆时尽量少用root账号登陆,避免操作失误.可以使用普通用户登录,登陆后再用`su - root用户名`命令来切换成系统管理员身份,使用`logout`退回到普通用户,再次输入`logout`退出系统
-2. 在提示符下输入`logout`即可注销用户,这个指令在图形运行级别无效,在运行级别有效
+---
 
 ### 5.用户管理
 
@@ -119,8 +107,8 @@ sync 把内存中的数据同步到磁盘中
 
 `useradd 用户名`
 
-1. 当创建用户成功后,会自动创建和用户同名的家目录,默认该用户的家目录在/home/用户名
-2. 也可以通过`useradd -d 指定目录 新的用户名`,给新创建的用户指定的家目录
+1. 当创建用户成功后,会自动创建和用户同名的家目录,默认该用户的家目录在`/home/用户名`
+2. 也可以通过==useradd -d 指定目录 新的用户名==,给新创建的用户指定的家目录
 
 #### 2.指定/修改密码
 
@@ -146,6 +134,9 @@ sync 把内存中的数据同步到磁盘中
 `who am i/whoami`查看当前用户
 
 如果使用`su - `切换用户,输出的依旧是第一次登入的用户
+
+1. 登陆时尽量少用root账号登陆,避免操作失误.可以使用普通用户登录,登陆后再用`su - root用户名`命令来切换成系统管理员身份,使用`logout`退回到普通用户,再次输入`logout`退出系统
+2. 在提示符下输入`logout`即可注销用户,这个指令在图形运行级别无效,在运行级别有效
 
 ---
 
@@ -249,19 +240,39 @@ sync 把内存中的数据同步到磁盘中
 
 按空格键向下一页
 
+* `ifconfig`:	查看ip地址
+
+* `reboot`:	重启
+
 ---
 
 #### 2.文件目录类
+
+##### 1.ls指令
+
+`ls`:列出当前目录下的所有文件
+
+`ls -a`:	显示所有文件
+
+`ls -l`:	详细信息
+
+`ls -la/s -al`:	显示所有文件的详细信息
+
+`ls -al /root`:	显示指定文件下所有文件的详细信息
+
+`ls -lh`:人性化显示
+
+---
 
 绝对路径:从根目录开始定位
 
 相对路径:从当前目录开始定位
 
-##### 1.pwd指令
+##### 2.pwd指令
 
 `pwd`:显示当前文件的绝对路径
 
-##### 2.cd指令
+##### 3.cd指令
 
 `cd [参数]`:切换到指定目录
 
@@ -269,23 +280,23 @@ sync 把内存中的数据同步到磁盘中
 
 `cd ..`:回到当前目录的上一级目录
 
-##### 3.mkdir指令
+##### 4.mkdir指令
 
 `mkdir [选项] 要创建的目录`:	用于创建目录
 
 `mkdir -p 要创建的目录`:	创建多级目录
 
-##### 4.rmdir指令
+##### 5.rmdir指令
 
 `rmdir [选项] 要删除的空目录`:	删除空目录
 
 `rm -rf 要删除的目录`:	删除非空目录
 
-##### 5.touch指令
+##### 6.touch指令
 
 `touch 文件名`:	创建空文件
 
-##### 6.cp指令
+##### 7.cp指令
 
 `cp [选项] source dest`:	拷贝文件到指定目录
 
@@ -293,7 +304,7 @@ sync 把内存中的数据同步到磁盘中
 
 `cp -r source dest`:	如果dest文件夹下有source文件夹中重复的文件,直接覆盖,不用确认
 
-##### 7.rm指令
+##### 8.rm指令
 
 `rm [选项] 要删除的文件或文件夹`:	移除文件或目录
 
@@ -301,13 +312,13 @@ sync 把内存中的数据同步到磁盘中
 
 `rm -rf 要删除的文件或文件夹`:	强制删除整个文件夹,不提示
 
-##### 8.mv指令
+##### 9.mv指令
 
 `mv oldNameFile newNameFile`:	如果在同一目录下,就表现为重命名
 
 `mv oldNameFile newNameFile`:	如果不在同一目录下,就表现为移动文件(剪切)
 
-##### 9.cat指令
+##### 10.cat指令
 
 `cat [选项] 要查看的文件`:	查看文件内容
 
@@ -317,7 +328,7 @@ sync 把内存中的数据同步到磁盘中
 
 cat 文件|more
 
-##### 10.more指令
+##### 11.more指令
 
 `more 要查看的文件`:	查看文件内容
 
@@ -333,7 +344,7 @@ cat 文件|more
 | =             | 输出当前行的行号         |
 | :f            | 输出文件名和当前行的行号 |
 
-##### 11.less指令
+##### 12.less指令
 
 less指令用来分屏查看文件内容,它的功能与more指令类似,但是比more指令更加强大,支持各种显示终端.less指令在现实文件内容时,并不是依次将整个文件加载之后才显示,而是根据显示需要加载的内容,对于显示大型文件具有较高的效率
 
@@ -346,7 +357,7 @@ less指令用来分屏查看文件内容,它的功能与more指令类似,但是�
 | ?字符    | 向上搜索字符 n: 向上查找; N: 向下查找 |
 | q        | 退出                                  |
 
-##### 12.echo指令
+##### 13.echo指令
 
 输出内容
 
@@ -354,7 +365,7 @@ less指令用来分屏查看文件内容,它的功能与more指令类似,但是�
 
 例: `echo $HOSTNAME`; `echo hello,world`
 
-##### 13.head指令
+##### 14.head指令
 
 `head 文件`:	显示文件的开头部分内容,默认情况下显示文件的前10行内容
 
@@ -362,7 +373,7 @@ less指令用来分屏查看文件内容,它的功能与more指令类似,但是�
 
 `head -n 5 文件`:	查看文件头5行内容
 
-##### 14.tail指令
+##### 15.tail指令
 
 `tail 文件`:	显示文件的末尾部分内容,默认情况下显示文件末尾10行内容
 
@@ -370,7 +381,7 @@ less指令用来分屏查看文件内容,它的功能与more指令类似,但是�
 
 `tail -n 5 文件`:	查看文件末尾5行内容 
 
-##### 15.`>`指令和`>>`指令
+##### 16.`>`指令和`>>`指令
 
 `>`:覆盖
 
@@ -381,7 +392,7 @@ less指令用来分屏查看文件内容,它的功能与more指令类似,但是�
 3. `cat 文件1 > 文件2`:    文件1的内容覆盖文件2的内容
 4. `echo "内容" >> 文件`:    将内容追加到文件中
 
-##### 16.ln指令
+##### 17.ln指令
 
 软链接也称为符号链接,类似于windows里的快捷方式,主要存放了链接其他文件的路径
 
@@ -389,7 +400,7 @@ less指令用来分屏查看文件内容,它的功能与more指令类似,但是�
 
 `rm [链接名]`:	删除链接
 
-##### 17.history指令
+##### 18.history指令
 
 `history`:	查看已执行过的所有历史指令
 
@@ -412,6 +423,8 @@ less指令用来分屏查看文件内容,它的功能与more指令类似,但是�
 3. date  "+%m":    显示当前月份
 4. date "+%d":    显示当前是哪一天
 5. date "+%Y-%m-%d %H:%M%S":    显示年月日时分秒
+
+当后边的参数有空格时,就要加引号,负责不用加
 
 ###### 2.设置日期
 
@@ -441,6 +454,14 @@ less指令用来分屏查看文件内容,它的功能与more指令类似,但是�
 
 `find /home -name hello.java`:	在home目录下开始搜索文件名为hello.java的文件
 
+删除`-exec rm -rf {} \;`
+
+`-exec`:	继续执行命令
+
+`{}`:	前边指令得到的内容
+
+`\;`:	结尾符号
+
 ---
 
 ##### 2.locate指令
@@ -461,10 +482,11 @@ grep过滤查找,管道符"|",表示将前一个命令的输出结果传递给�
 
 `grep [选项] 查找内容 源文件`
 
-| 选项 | 功能             |
-| ---- | ---------------- |
-| -n   | 显示匹配行及行号 |
-| -i   | 忽略字母大小写   |
+| 选项 | 功能                        |
+| ---- | --------------------------- |
+| -n   | 显示匹配行及行号            |
+| -i   | 忽略字母大小写              |
+| -v   | 反向匹配,获得不含参数的结果 |
 
 `cat /mnt/hgfs/share/dierzhou/promusic/main.c|grep -n "if"`与
 
@@ -642,11 +664,11 @@ tar指令是打包指令,最后打包的文件是.tar.gz的文件
 
 其余字符每3个一组
 
-第一组`(rwx)`:代表文件的拥有者对该文件具有读`r`,写`w`,执行`x`权限
+第一组`(rwx)`:代表**文件的拥有者**对该文件具有读`r`,写`w`,执行`x`权限
 
-第二组`(rw-)`:代表与文件拥有者同组的用户对该文件具有读`r`,写`w`的权限,但没有执行的权力
+第二组`(rw-)`:代表与**文件拥有者同组的用户**对该文件具有读`r`,写`w`的权限,但没有执行的权力
 
-第三组`(r--)`:代表不与文件拥有者同组的其他用户具有读`r`的权限,但没有写和执行的权利
+第三组`(r--)`:代表**不与文件拥有者同组的其他用户**具有读`r`的权限,但没有写和执行的权利
 
 `1`		文件:	硬连接数为`1` 目录:	子目录数为`1`
 
@@ -728,7 +750,7 @@ rwx的数字表示:	`r` = 4,	`w` = 2,	`x` = 1,	`wx` = 3,	`rwx` = 7,	`rx` = 5,	`r
 
 ### 10.crond任务调度
 
-任务调度:	是指系统在某个时间执行特定的命令或程序
+任务调度:	是指**系统在某个时间执行特定的命令或程序**
 
 任务调度的分类:	
 
@@ -807,9 +829,9 @@ rwx的数字表示:	`r` = 4,	`w` = 2,	`x` = 1,	`wx` = 3,	`rwx` = 7,	`rx` = 5,	`r
 
 ### 11.at定时任务
 
-1. at命令是一次性定时计划任务,at的守护进程atd会以后台模式运行,检查作业队列来运行
+1. **at命令是一次性定时计划任务**,at的守护进程atd会以后台模式运行,检查作业队列来运行
 
-2. 默认情况下,atd守护进程每60秒检查作业队列,有作业时,还会检查作业运行时间,如果是鉴于当前时间匹配,则运行此作业
+2. 默认情况下,atd守护进程**每60秒检查作业队列**,有作业时,还会检查作业运行时间,如果是鉴于当前时间匹配,则运行此作业
 
 3. at命令是一次性的定时计划任务,执行完一个任务后不再执行此任务
 
@@ -1092,7 +1114,7 @@ linux:
 
 ##### `ps -aux`与`ps -ef`的区别
 
-ps -aux与ps -ef这两个命令显示的结果是差不多的。
+`ps -aux`与 `ps -ef`这两个命令显示的结果是差不多的。
 
 不同之处就是显示风格不同，前者是`BSD`风格，后者`SYSTEM V`
 
@@ -1100,7 +1122,7 @@ ps -aux与ps -ef这两个命令显示的结果是差不多的。
 
 ---
 
-`ps -ef`以全格式显示当前所有的进程
+**`ps -ef`以全格式显示当前所有的进程**
 
 `-e`显示所有进程
 
@@ -1248,4 +1270,866 @@ service管理指令举例
 
 `systemctl [start | stop | restart | status] 服务名`
 
-* `systemctl`指令管理的服务在`usr/lib/systemd/system`zhong 
+* `systemctl`指令管理的服务在`usr/lib/systemd/system`中可以查看
+
+##### 1.systemctl设置服务的自启动状态
+
+1. `systemctl list-unit-files [| grep 服务名]`:	查看服务自启动状态
+2. `systemctl enable 服务名`:    设置服务开机启动(3和5运行级别生效)
+3. `systemctl disable 服务名`:    关闭服务开机启动(3和5运行级别生效)
+4. `systemctl is-enabled 服务名`:    查询某个服务是否是自启动
+
+---
+
+查看防火墙的状况,关闭防火墙,打开防火墙
+
+1. 查看防火墙状态
+
+   `systemctl status firewalld`
+
+2. 关闭防火墙
+
+   `systemctl stop firewalld`
+
+3. 打开防火墙
+
+   `systemctl open firewalld`
+
+---
+
+1. 打开或关闭防火墙会立即生效,通过`telnet 测试 某个端口`可以查看
+
+2. 这种方式只是临时生效,当重启系统后,还是回归到原来对服务的设置
+3. 打开防火墙`systemctl open firewalld`;关闭防火墙`systemctl stop firewalld`
+4. 设置某个服务自启动或关闭永久生效,通过`systemctl [enable|disable] 服务名`
+
+---
+
+#### 5.打开或者关闭指定端口
+
+在真正的生产环境,往往需要打开防火墙,,但外部请求就不能和端口进行通信,那么就需要打开指定端口
+
+##### 1.firewall指令
+
+在防火墙打开的情况下.进行端口的开放和关闭
+
+`permanent`:	永久
+
+`netstat -anp`:	查看所有的进程和端口使用情况
+
+打开端口:	`firewall-cmd --permanent --add-port=端口号/协议`
+
+关闭端口:	`firewall-cmd --permanent --remove-port=端口号/协议`
+
+对端口进行操作必须重新载入才能生效:	`firewall-cmd --reload`
+
+查询端口是否开放:	`firewall-cmd --query-port=端口/协议`
+
+---
+
+#### 6.动态监控进程
+
+`top`与`ps`命令相似.都是用来显示正在执行的进程.`top`与`ps`最大的不同就是`top`在执行一段时间后可以更新正在运行的进程
+
+`top [选项]`
+
+选项
+
+| 选项 | 功能                                         |
+| ---- | -------------------------------------------- |
+| -d n | 指定top命令每隔n秒进行更新,默认是3秒一次更新 |
+| -i   | 不显示任何闲置或者僵死的进程                 |
+| -p   | 通过指定监控进程ID来仅仅监控某个进程的状态   |
+
+---
+
+交互操作
+
+| 操作 | 功能                               |
+| ---- | ---------------------------------- |
+| P    | 以CPU占用率从高到低排序.默认是此项 |
+| M    | 以内存的使用率排序                 |
+| N    | 以PID排序                          |
+| q    | 退出top                            |
+| u    | 查看指定用户进程                   |
+| k    | 结束指定进程                       |
+
+---
+
+监控指定用户
+
+1. `top`查看执行的进程
+2. 输入`u`,再输入想要查看的用户
+
+终止指定的进程
+
+1. 输入`k`,在输入想要终止的进程
+2. 输入`9`强制终止进程
+
+指定系统更新时间(默认是3秒)
+
+`top -d 10`
+
+---
+
+#### 7.监控网络状态
+
+##### 1.查看系统网络情况
+
+`netstat [选项]`
+
+选项
+
+`-an`:	按一定顺序排列输出
+
+`-p`:	显示哪个进程在调用
+
+---
+
+`Proto`:	网络协议
+
+`Local Address`:	本地地址
+
+`Foreign Address`:	外部地址
+
+---
+
+查看服务名为`sshd`的服务的信息
+
+`netstat -anp | grep sshd`
+
+---
+
+### 16.rpm包的管理
+
+rpm用于互联网下载包的打包及安装工具.他可以生成.RPM扩展名的文件.RPM是RedHat Package Manager(RedHat软件包管理工具)的缩写
+
+简单查询指令
+
+`rpm -qa | grep XX`:	查询已安装的rpm列表
+
+#### 1.rpm包的基本格式
+
+一个rpm包名:	`firefox-60.2.2-1.el7.centos.x86_64`
+
+名称:	`firefox`
+
+版本号:	`60.2.2-1`
+
+适用操作系统:	`el7.centos.x86_64`表示centos7.x的64位系统,如果是`i686,i386`表示32位系统,noarch表示通用
+
+#### 2.rpm的查询指令
+
+##### 1.查询安装的所有rpm软件包
+
+`rpm -qa`
+
+`rpm -qa | more`
+
+`rpm -qa | grep X[rpm -qa | grep firefox]`
+
+##### 2.查询软件包是否安装
+
+`rpm -q 软件包名`
+
+`rpm -q firefox`
+
+![image-20210808072033999](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210808072033999.png)
+
+##### 3.查询软件包信息
+
+`rpm -qi 软件包名`
+
+`rpm -qi firefox`
+
+![image-20210808071958238](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210808071958238.png)
+
+##### 4.查询软件包中的文件
+
+`rpm -ql 软件包名`
+
+`rpm -ql firefox`
+
+##### 5.查询文件所属的软件包
+
+`rpm -qf 文件全路径名`
+
+`rpm -qf /etc/passwd`
+
+![image-20210808072159718](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210808072159718.png)
+
+`rpm -qf /root/install.log`
+
+##### 6.卸载rpm包
+
+erase
+
+`rpm -e rpm包名`
+
+`rpm -e firefox`
+
+##### 7.安装rpm包
+
+前提是有rpm包
+
+`rpm -ivh rpm包全路径名称`
+
+###### 参数说明
+
+`i=install`	安装
+
+`v=verbose`	提示
+
+`h=hash`	进度条
+
+![image-20210808073258304](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210808073258304.png)
+
+---
+
+### 17.yum
+
+yum是一个Shell前端软件包管理器.基于RPM包管理,能够从指定的服务器自动下载RPM包并安装,可以自动处理依赖关系,并一次安装所有依赖的软件包
+
+#### 1.yum的基本命令
+
+##### 1.查询yum服务器是否有需要安装的软件
+
+`yum list | grep xx`
+
+##### 2.安装指定的yum包
+
+`yum install xxx`
+
+---
+
+### 18.安装JDK
+
+#### 安装步骤
+
+1. mkdir/opt/jdk
+
+2. 通过xftp6上传到/opt/jdk下
+
+3. cd /opt/jdk
+
+4. 解压tar -zxvf jdk-8u261-linux-x64.tar.gz
+
+5. mkdir /user/local/java
+
+6. mv /opt/jdk/jdk1.8.0_261 /usr/local/java
+
+7. 配置环境变量的配置文件vim /etc/profile
+
+   **要使有它能在任何地方都能运行**
+
+8. export JAVA_HOME=/usr/local/java/jdk1.8.0_261
+
+9. export PATH=$JAVA_HOME/bin:\$​PATH
+
+10. source /etc/profile [让文件生效]
+
+---
+
+### 19.安装tomcat
+
+#### 安装步骤
+
+1. 上传安装文件,并解压缩到/opt/tomcat
+2. 进入解压目录/bin,启动tomcat `./startup.sh`
+3. 开放端口8080
+
+![image-20210809081108660](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210809081108660.png)
+
+html文件位于ROOT目录下
+
+![image-20210809073955747](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210809073955747.png)
+
+---
+
+### 20.安装idea
+
+1. 上传安装文件,并解压缩到/opt/idea
+2. 进入解压目录/bin,启动idea `./idea.sh`
+
+---
+
+### 21.Shell编程
+
+#### 1.Shell简介
+
+![image-20210809081747023](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210809081747023.png)
+
+Shell是一个命令解释器,它为用户提供了一个向linux内核发送请求以便运行程序的界面系统级程序,用户可以用Shell来启动,挂起,停止甚至是编写一些程序
+
+---
+
+#### 2.Shell脚本执行的方式
+
+##### 1.脚本格式要求
+
+1. 脚本要以``#!/bin/bash`开头
+2. 脚本需要有可执行的权限
+3. `.sh`后缀只是用来标识这是一个脚本,不加对运行没有影响
+
+##### 2.脚本的常用执行方式
+
+![image-20210809083347367](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809083347367.png)
+
+1. 输入脚本的绝对路径或相对路径
+
+   首先要赋予脚本的可执行权限,再执行脚本
+
+2. `sh + 脚本`
+
+   不用赋予脚本的可执行权限,直接执行即可
+
+![image-20210809083304268](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809083304268.png)
+
+---
+
+#### 3.shell变量
+
+##### 1.shell变量介绍
+
+1. Linux Shell中的变量分为:	系统变量和用户自定义变量
+2. 系统变量:    $HOME,\$PWD,\$SHELL,\$USER等等,比如`echo $HOME`
+3. 显示当前shell中的所有变量:`set`
+
+##### 2.shell变量的定义
+
+1. 定义变量:`变量名=值`,**不能留空格**
+2. 撤销变量:`unset 变量`
+3. 声明静态变量:`readonly变量`,但是不能撤销`unset`
+
+---
+
+![image-20210809090448529](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809090448529.png)
+
+![image-20210809085511246](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809085511246.png)
+
+---
+
+##### 3.shell变量的规则
+
+1. 变量的名称可以由数字,字母,下划线组成,不能以数字开头
+2. 等号两侧不能有空格
+3. 变量名称一般为大写,规范
+
+A=\`date\`,会运行date指令,并把返回结果返回给A,等价于`A=$(date)`
+
+![image-20210809090428011](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809090428011.png)
+
+![image-20210809091952452](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809091952452.png)
+
+---
+
+##### 4.设置环境变量(全局变量)
+
+基本语法
+
+1.`export 变量名=变量值`:	将shell变量输出为环境变量/全局变量
+
+2.`source 配置文件`:	让修改后的配置信息立即生效
+
+3.`echo $变量名`:	查询环境变量的值
+
+---
+
+##### 5.多行注释
+
+```bash
+:<<!
+内容
+!
+```
+
+一定要单独一行
+
+---
+
+##### 6.位置参数变量(传参)
+
+基本语法
+
+1.`$n`:	获取参数
+
+$0~n表示第一个到第n个参数,n大于10,第10个参数就要用\${10}表示,第10个参数就要用\${11}表示
+
+2.`$*`:	获取所有的参数,把每个参数看成一个整体,用空格分开
+
+3.`$@`:	获取所有的参数,把每个参数区别对待
+
+4.`$#`:	获取参数的个数
+
+![image-20210809093306427](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809093306427.png)
+
+![image-20210809093338576](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809093338576.png)
+
+---
+
+##### 7.预定义变量
+
+基本语法
+
+1.`$$`:	当前进程的进程号(PID)
+
+2.`$!`:	后台运行的最后一个进程的进程号(PID)
+
+3.`$?`:	最后一次执行的命令的返回状态.如果为0,则说明上一个命令执行成功,如果非0(具体的值可以自己设置),则说明执行失败
+
+![image-20210809095137604](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809095137604.png)
+
+![image-20210809095251597](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809095251597.png)
+
+---
+
+##### 8.运算符
+
+基本语法
+
+ 1.`$((运算式))`, `$[运算式]`, `expr m + n`, `expression 表达式`
+
+2.expr运算符之间要有空格,否则会被认为是一个参数,如果要将expr的结果赋给某个变量,使用``
+
+3.expr \\* 乘, / 除, % 取余
+
+![image-20210809101809108](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809101809108.png)
+
+![image-20210809101821435](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809101821435.png)
+
+---
+
+##### 9.条件判断
+
+基本语法
+
+`[ condition ]`:	condition前后要有空格
+
+非空返回true, 可使用$?验证(0为true,非0为false)
+
+`[ ]`:	返回false
+
+###### 常用判断条件
+
+1. 字符串的比较
+
+   `=`
+
+2. 两个整数的比较
+
+   小于:	`-lt`
+
+   小于等于:	`-le`
+
+   等于:	`-eq`
+
+   大于:	`-gt`
+
+   大于等于:	`-ge`
+
+   不等于:	`-ne`
+
+3. 按照文件权限进行判断
+
+   有读的权力:	`-r`
+
+   有写的权力:	`-w`
+
+   有执行的权力:	`-x`
+
+4. 按照文件的类型进行判断
+
+   文件存在并且是常规文件:	`-f`
+
+   文件存在:	`-e`
+
+   文件存在并且是一个目录:	`-d`
+
+   ![image-20210809120311114](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809120311114.png)
+   
+   ![image-20210809205053401](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809205053401.png)
+
+---
+
+##### 10.流程控制
+
+###### 1.单分支
+
+```bash
+if [ 条件判断式 ]
+then
+	...;
+fi
+```
+
+###### 2.多分支
+
+```bash
+if [条件判断式]
+then
+	...;
+elif [条件判断式]
+	...;
+fi
+```
+
+###### 3.case
+
+```bash
+case $变量名 in
+"1")
+echo "周一"
+"2")
+echo "周二"
+"")
+echo "idontknow"
+esac
+```
+
+###### 3.for循环
+
+```bash
+for 变量 in 值1 值2 值2
+do
+...
+done
+```
+
+```bash
+for ((初始值;循环控制条件;变量变化))
+do
+...
+done
+```
+
+![image-20210809124401927](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809124401927.png)
+
+---
+
+##### 11.while
+
+```bash
+while [ 条件判断式 ]
+do
+...
+done
+```
+
+---
+
+#### 4.read读取控制台输入
+
+`read (选项)(参数)`
+
+选项:
+
+`-p`:	指定读取值时的提示符
+
+`-t`:	指定读取值时的等待时间(秒),如果在指定时间内没有输入,就不再等待
+
+![image-20210809143839900](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809143839900.png)
+
+![image-20210809144138739](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809144138739.png)
+
+---
+
+#### 5.函数
+
+##### 1.系统函数
+
+###### 1.basename
+
+`basename`:	返回完整路径最后/的部分,**常用于获取文件名**
+
+`basename [pathname][suffix]`
+
+`basename [string][suffix]`:	会删除所有的前缀包括最后一个`/`字符,然后将字符串显示出来
+
+`suffix`为后缀,如果`suffix`被指定了,`basename`会将`pathname`或`string`中的`suffix`去掉
+
+![image-20210809144807848](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809144807848.png)
+
+![image-20210809144843854](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809144843854.png)
+
+---
+
+###### 2.dirname
+
+`dirname`:	返回完整路径最后`/`的前面的部分,常用于获取路径部分
+
+`dirname 文件绝对路径`:	从给定的包含绝对路径的文件名中去除文件名(非目录部分),然后返回剩下的路径(目录部分)
+
+![image-20210809145249068](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809145249068.png)
+
+---
+
+###### 3.自定义函数
+
+```bash
+[funcation] funname[()]\
+{
+	Action;
+	[return int;]
+}
+```
+
+调用直接写函数名: `funname`
+
+![image-20210809150248289](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809150248289.png)
+
+![image-20210809150302439](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210809150302439.png)
+
+---
+
+### 综合案例
+
+需求分析
+
+1. 每天凌晨备份数据库`database`到`/mnt/hgfs/share/db`
+2. 备份开始和备份结束能够给出相应的提示信息
+3. 备份的文件要求以备份时间为文件名,并打包成.tar.gz的形式,比如`2021-3-12-030212.tar.gz`
+4. 在备份的同时,检查是否有10天前备份的数据库文件,如果有就将其删除
+
+---
+
+### 22.日志
+
+1. 日志文件是重要的系统信息文件,其中记录了许多**重要的系统事件**,包括用户的登录信息,系统的启动信息,系统的安全信息,邮件相关信息,各种服务相关信息等
+2. 日志对于安全来说也很重要,它记录了系统每天发生的事情,通过日志来检查错误发生的原因,或者受到攻击时攻击者留下的痕迹
+3. **日志是用来记录重大事件的工具**
+
+`/var/log`目录就是系统日志文件的保存位置
+
+#### 1.系统常用日志
+
+|     日志文件      |                             说明                             |
+| :---------------: | :----------------------------------------------------------: |
+| /var/log/boot.log |                         系统启动日志                         |
+|   /var/log/cron   |                 记录与系统定时任务相关的日志                 |
+| /var/log/lastlog  | 记录系统中所有用户最后一次登录的时间的日志,这个文件是二进制文件,要使用lastlog查看 |
+|  /var/log/mailog  |                      记录邮箱信息的日志                      |
+| /var/log/message  | 记录系统重要信息的日志.这个日志文件中会记录linux系统的绝大多数重要信息.如果系统出现问题,首先要检查的应该是这个日志文件 |
+|  /var/log/secure  | 记录验证和授权方面的信息,只要是涉及账户和密码的程序都会记录,比如系统的登录,ssh的登录,su切换用户,sudo的授权,甚至添加用户和修改用户密码都会记录在这个日志文件中 |
+|   /var/tun/ulmp   | 记录当前已经登陆的用户的信息,这个文件会随着用户的登录和注销不断变化,只记录当前登录用户的信.这个文件不能用vi查看,而要使用w,who,users等命令查看 |
+
+---
+
+#### 2.日志管理服务`rsyslogd`
+
+CentOS7.6日志服务是`rsyslogd`,CentOS6.x日志服务是`syslogd`,`rsysylogd`功能更加强大.`rsyslogd`的使用,日志文件的格式,和`syslogd`服务是兼容的
+
+日志管理服务是一个后台程序,服务,帮我们记录相关的日志,`/etc/rsyslog.conf`记录了他所管理的日志有哪些
+
+查询Linux中的`rsyslogd`服务是否启动
+
+`ps -ef I grep rsyslog | grep -v grep`                                       
+
+查询rsyslogd服务的自启动状态
+
+`systemctl list-unit-files | grep rsyslog`
+
+---
+
+配置文件:	`/etc/rsyslog.conf`
+
+编辑文件时的格式为:	*.\*, 存放日志文件
+
+**第一个\*代表日志类型,第二个*表示日志级别**
+
+##### 1.日志类型分为
+
+|       日志类型       |                 说明                  |
+| :------------------: | :-----------------------------------: |
+|         auth         |            ##pam产生的日志            |
+|       authpriv       |     ##ssh,ftp等登陆信息的验证消息     |
+|         corn         |            ##时间任务相关             |
+|         kern         |                ##内核                 |
+|         lpr          |                ##打印                 |
+|         mail         |                ##邮件                 |
+| mark(syslog)-rsyslog |       ##服务内部的信息,时间标识       |
+|         news         |               ##新闻组                |
+|         uucp         | ##unix to nuix copy主机之间相关的通信 |
+|      local 1-7       |          ##自定义的日志设备           |
+
+##### 2.日志级别分为
+
+| 日志级别 |                         说明                          |
+| :------: | :---------------------------------------------------: |
+|  debug   |              ##有调试信息的,日志通信最多              |
+|   info   |                 ##一般信息日志,最常用                 |
+|  notice  |            ##最具有重要性的普通条件的信息             |
+| warning  |                      ##警告级别                       |
+|   err    |    ##错误级别,阻止某个功能或模块不能正常工作的信息    |
+|   crit   | ##严重级别,阻止整个系统或者整个软件不能正常工作的信息 |
+|  alert   |                 ##需要立即修改的信息                  |
+|  emerg   |                 ##内核崩溃等重要信息                  |
+|   none   |                    ##什么都不记录                     |
+
+---
+
+##### 3.日志文件的格式
+
+由日志服务`rsyslogd`记录的日志文件,日志文件的格式包括:
+
+1. 事件产生的时间
+2. 产生事件的服务器的主机名
+3. 产生事件的服务器名或程序名
+4. 时间的具体信息
+
+----
+
+##### 4.自定义日志服务
+
+在`/etc/rsyslog.conf`中添加一个日志文件`/var/log/rizhi.log`,当有事件发生时(比如sshd服务相关事件),该文件会接收到信息并保存
+
+---
+
+##### 5.日志轮替
+
+日志轮替就是把旧的日志移动并改名,同时建立新的空日志文件,当旧的日志文件超出保存的范围之后,就会进行删除
+
+意义:如果不进行删改,文件就会越堆越多,占用过多内存
+
+###### 1.日志轮替文件命令
+
+1. cemtOS7使用`logrotate`进行日志轮替管理,要想改变日志轮替文件名字,通过`/etc/logrotate.conf`配置文件中的`dateext`参数
+2. 如果配置文件中有`dateext`参数,那么日志就会用日期来作为日志文件的后缀,例如:    `secure-20201010`.这样日志文件名就不会重叠,也不需要日志文件的改名,只需要指定保存日志的个数,删除多余的日志文件即可
+3. 如果配置文件没有`dateext`参数,日志文件就需要进行改名.当第一次进行日志轮替时,当前的`secure`日志就会自动改名为`secure.1`,然后新建`secure`日志,用来保存新的日志.当第二次进行日志轮替时,`secure.1`会自动改名为`secure.2`,当前的`secure`日志会自动改名为`secure.1`,然后也会新建`secure`日志,用来保存新的日志,以此类推
+
+---
+
+###### 2.`logrotate`的配置文件
+
+`etc/logrotate.conf`:	全局配置文件
+
+```bash
+# see "man logrotate" for details
+# rotate log files weekly 每周对日志文件进行一次轮替
+weekly
+
+# keep 4 weeks worth of backlogs 共保存四份日志文件,当建立新的日志文件时,旧的会被删除
+rotate 4
+
+# create new (empty) log files after rotating old ones 创建新的空的日志文件,在日志轮替后
+create
+
+# use date as a suffix of the rotated file 使用日期作为日志轮替文件的后缀
+dateext
+
+# uncomment this if you want your log files compressed 日志文件是否压缩,如果取消注释,则日志就会在转存的同时进行压缩
+#compress
+
+# RPM packages drop log rotation information into this directory 包含etc/logrotate.d/目录中所有的子配置文件,也就是说会把这个目录中所有的子配置文件读取出来
+include /etc/logrotate.d
+
+# no packages own wtmp and btmp -- we'll rotate them here
+/var/log/wtmp {
+    monthly #每月对日志文件进行一次轮替
+    create 0664 root utmp #建立新的日志文件,权限是0664,所有者是root,所属组是utmp组
+	minsize 1M #日志文件最小轮替大小是1MB.也就是说日志一定要超过1MB才会进行轮替,否则就算时间到达一个月,也不会进行转存
+    rotate 1 #仅保留一个日志备份.也就是说只有wtmp和wtmp.1两个日志文件
+}
+
+/var/log/btmp {
+    missingok #如果日志不存在,则忽略该日志的警告信息
+    monthly
+    create 0600 root utmp
+    rotate 1
+}
+
+# system-specific logs may be also be configured here.
+
+```
+
+---
+
+也可以把某个日志文件的轮替规则写道`/etc/logrotate.d`目录
+
+**单独设置的轮替规则优先级高于全局配置**
+
+---
+
+###### 3.参数说明
+
+|          参数           |                             说明                             |
+| :---------------------: | :----------------------------------------------------------: |
+|          daily          |                     日志的轮替周期是每天                     |
+|         weekly          |                     日志的轮替周期是每周                     |
+|         monthly         |                     日志的轮替周期是每月                     |
+|       rotate 数字       |             保留的日志文件的个数,0是不进行被风女             |
+|        compress         |                 日志轮替时,旧的日志进行压缩                  |
+| create mode owner group |     建立新的日志,同时指定新的日志的权限与所有者和所属组      |
+|      mail address       |      当日志轮替时,通过邮件发送输出内容到指定的邮件地址       |
+|        missingok        |            如果日志不存在,则忽略该日志的警告信息             |
+|       notifempty        |              如果日志为空文件时,不进行日志轮替               |
+|      minsize 大小       | 日志轮替的最小值.也就是日志一定要达到这个最小值才会轮替,否则就算时间达到也不会进行轮替 |
+|        size 大小        |    日志只会大于指定大小才进行轮替,而不是按照时间进行轮替     |
+|         dateext         |                使用日期作为日志轮替文件的后缀                |
+|      sharedscripts      |                在此关键字之后的脚本只执行一次                |
+|   prerotate/endscript   |                  在日志轮替之前执行脚本命令                  |
+|  postrotate/endscript   |                  在日志轮替之后执行脚本命令                  |
+
+---
+
+###### 4.把自己的日志加入到日志轮替
+
+1. 直接在`/etc/logrotate.conf`配置文件中写入该日志的轮替策略
+2. 在`/etc/logrotate.d/`目录中新建该日志的轮替文件,在该轮替文件中写入正确的轮替策略,因为该目录中的文件都会被`include`到主配置文件中,所以也可以把日志加入轮替
+3. 推荐第二种,因为系统中需要轮替的文件非常多,如果全部都直接写到`/etc/logrotate.conf`配置文件中,那么这个文件的可管理性就会非常差,不利于此文件的维护
+
+![image-20210810105555490](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210810105555490.png)
+
+```bash
+#要进行轮替的日志文件
+/var/log/rizhi.log
+{
+        missingok
+        daily
+        copytruncate
+        rotate 7
+        notifempty
+}       
+```
+
+---
+
+###### 5.日志轮替原理
+
+日志轮替之所以可以在指定时间备份日志,是依赖系统的定时任务.在`/etc/cron.daily`目录中,就会发现这个目录中的`logrotate`文件,`logrotate`通过这个文件依赖定时任务执行的
+
+![image-20210810111306024](C:\Users\Administrator\Desktop\Java\全栈\linux\linux.assets\image-20210810111306024.png)
+
+---
+
+#### 3.内存日志
+
+存在于内存中,不在是实时变化的,和当前运行相关,重新启动时,内存日志就会被清空
+
+##### 1.基本操作
+
+###### 1.查看全部内存日志
+
+`journalctl`
+
+###### 2.查看最新的3条日志
+
+`journalctl -n 3`
+
+###### 3.查看起始时间到结束时间的日志
+
+`journalctl  --since 19:00 --until 19:10:10`
+
+###### 4.查看报错日志
+
+`journalctl -p err`
+
+###### 5.查看日志的详细内容
+
+`journalctl -o verbose`
+
+###### 6.查看包含这些参数的日志
+
+`journalctl _PID=1245 _COMM=sshd`或者 `journalctl | grep sshd
+
+---
+
